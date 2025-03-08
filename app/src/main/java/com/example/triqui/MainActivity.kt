@@ -1,5 +1,6 @@
 package com.example.triqui
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
@@ -14,5 +15,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.triqui.setOnClickListener {
+            startActivity(Intent(baseContext, TriquiActivity::class.java))
+        }
     }
 }

@@ -24,7 +24,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:text="PLAYER X"
         android:gravity="center"
         android:textStyle="bold"
@@ -141,7 +141,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:text="PLAYER O"
         android:gravity="center"
         android:textStyle="bold"
@@ -150,13 +150,31 @@
         android:layout_weight="10"
         />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="20"
+        android:orientation="horizontal">
     <Button
         android:id="@+id/newGame"
+        android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="10"
+        android:layout_weight="2"
         android:backgroundTint="#000000"
         android:text="New Game" />
+
+    <Button
+        android:id="@+id/menu"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:backgroundTint="#3F51B5"
+        android:text="Menu" />
+    </LinearLayout>
+
+
 
 
 </LinearLayout>

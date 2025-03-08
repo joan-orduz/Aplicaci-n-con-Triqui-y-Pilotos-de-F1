@@ -1,17 +1,14 @@
 package com.example.triqui
 
-import android.app.Activity
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.triqui.databinding.ActivityTriquiBinding
 
-class Triqui {
+class TriquiJuego {
 
     // Este arreglo representará el tablero, será editado con cada movimiento del jugador X o del jugador O
     private var tablero = arrayOf("N", "N", "N", "N", "N", "N", "N", "N", "N")
@@ -72,17 +69,15 @@ class Triqui {
 
 class TriquiActivity : AppCompatActivity() {
     private lateinit var binding : ActivityTriquiBinding;
-    private val juego = Triqui()
+    private val juego = TriquiJuego()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Llamar updateUI
+        binding = ActivityTriquiBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         updateUI()
-        // Guardar las casillas en un array para no hacer codigo para cada una
         val casillas = arrayOf(binding.casilla1, binding.casilla2, binding.casilla3, binding.casilla4, binding.casilla5, binding.casilla6, binding.casilla7, binding.casilla8, binding.casilla9)
-        // Recorre cada casilla y le asigna un listener
         casillas.forEachIndexed { indice, casilla ->
             casilla.setOnClickListener {
-                // Llama a hacer movimiento y segun el retorno actualiza la interfaz o avisa que la casilla no es valida.
                 if (juego.hacerMovimiento(indice)) {
                     updateUI()
                 } else {
@@ -90,12 +85,13 @@ class TriquiActivity : AppCompatActivity() {
                 }
             }
         }
-        // Asigna la funcion de reiniciar el juego y actualizar la interfaz al boton New Game
         binding.newGame.setOnClickListener {
             juego.reiniciarJuego()
             updateUI()
         }
-
+        binding.menu.setOnClickListener {
+            startActivity(Intent(baseContext, MainActivity::class.java))
+        }
     }
 
     // Esta función permite actualizar la interfaz del usuario según los movimientos.
