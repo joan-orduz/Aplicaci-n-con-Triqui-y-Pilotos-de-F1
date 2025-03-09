@@ -1,14 +1,16 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-parcelize")
 }
 
+
 android {
-    namespace = "com.example.triqui"
+    namespace = "com.example.taller1Movil"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.triqui"
+        applicationId = "com.example.taller1Movil"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
@@ -49,4 +51,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation("com.android.volley:volley:1.2.1")
 }

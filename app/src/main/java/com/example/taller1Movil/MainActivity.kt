@@ -1,12 +1,9 @@
-package com.example.triqui
+package com.example.taller1Movil
 
 import android.content.Intent
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.triqui.databinding.ActivityMainBinding
+import com.example.taller1Movil.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -17,6 +14,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.triqui.setOnClickListener {
             startActivity(Intent(baseContext, TriquiActivity::class.java))
+        }
+        binding.f1.setOnClickListener {
+            startActivity(Intent(baseContext, ListPilotosActivity::class.java))
         }
     }
 }
