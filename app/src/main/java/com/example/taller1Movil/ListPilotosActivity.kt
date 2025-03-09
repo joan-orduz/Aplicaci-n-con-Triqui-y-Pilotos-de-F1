@@ -28,6 +28,7 @@ class ListPilotosActivity : AppCompatActivity() {
             val selectedDriver = drivers[position]
 
             val intent = Intent(this, PilotActivity::class.java)
+            Log.d("DEBUG", "Enviando driver: $selectedDriver")
             intent.putExtra("driver", selectedDriver)
             startActivity(intent)
 
@@ -53,7 +54,8 @@ class ListPilotosActivity : AppCompatActivity() {
                         countryCode = jsonObject.optString("country_code", "N/A"), // Puede no existir
                         teamName = jsonObject.optString("team_name", "N/A"),
                         teamColour = jsonObject.optString("team_colour", "#FFFFFF"),
-                        headshotUrl = jsonObject.optString("headshot_url", "")
+                        headshotUrl = jsonObject.optString("headshot_url", ""),
+                        nameAcronym = jsonObject.optString("name_acronym", "N/a")
                     )
                     drivers.add(driver)
                 }
