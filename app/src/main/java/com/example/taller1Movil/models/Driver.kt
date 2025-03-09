@@ -13,5 +13,6 @@ data class Driver(
     val countryCode: String,
     val teamName: String,
     val teamColour: String,
-    val headshotUrl: String
+    val headshotUrl: String,
+    val nameAcronym: String
 ) : Parcelable
