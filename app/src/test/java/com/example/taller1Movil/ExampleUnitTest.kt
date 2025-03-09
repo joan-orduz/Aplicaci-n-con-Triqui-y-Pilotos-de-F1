@@ -1,4 +1,4 @@
-package com.example.triqui
+package com.example.taller1Movil
 
 import org.junit.Test
 
