@@ -43,6 +43,14 @@ class PilotActivity : AppCompatActivity() {
     }
 
     private fun loadFlag(driver: Driver) {
+
+        // Si el piloto no tiene la nacionalidad registrada en la API se muestra una imagen del planeta tierra
+        if (driver.countryCode.isNullOrEmpty() || driver.countryCode == "null") {
+            Glide.with(this)
+                .load(R.drawable.planeta)
+                .into(binding.nacionalidad)
+            return        }
+
         val queue = Volley.newRequestQueue(this)
         val url = "https://restcountries.com/v3.1/alpha/${driver.countryCode}"
 
