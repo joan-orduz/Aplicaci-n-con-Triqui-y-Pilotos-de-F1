@@ -26,12 +26,10 @@ class ListPilotosActivity : AppCompatActivity() {
         loadFromURL()
         binding.listPilotos.setOnItemClickListener { _, _, position, _ ->
             val selectedDriver = drivers[position]
-
             val intent = Intent(this, PilotActivity::class.java)
             Log.d("DEBUG", "Enviando driver: $selectedDriver")
             intent.putExtra("driver", selectedDriver)
             startActivity(intent)
-
         }
     }
 
@@ -40,30 +38,27 @@ class ListPilotosActivity : AppCompatActivity() {
         val url = "https://api.openf1.org/v1/drivers?session_key=9684" // Testing 2025
 
         val req = StringRequest(url, Response.Listener { response ->
-            try {
-                drivers.clear() // Limpiar la lista antes de agregar nuevos datos
-                val json = JSONArray(response)
+            drivers.clear() // Limpiar la lista antes de agregar nuevos datos
+            val json = JSONArray(response)
 
-                for (i in 0 until json.length()) {
-                    val jsonObject = json.getJSONObject(i)
-                    val driver = Driver(
-                        driverNumber = jsonObject.getInt("driver_number"),
-                        fullName = jsonObject.getString("full_name"),
-                        firstName = jsonObject.getString("first_name"),
-                        lastName = jsonObject.getString("last_name"),
-                        countryCode = jsonObject.optString("country_code", "N/A"), // Puede no existir
-                        teamName = jsonObject.optString("team_name", "N/A"),
-                        teamColour = jsonObject.optString("team_colour", "#FFFFFF"),
-                        headshotUrl = jsonObject.optString("headshot_url", ""),
-                        nameAcronym = jsonObject.optString("name_acronym", "N/a")
-                    )
-                    drivers.add(driver)
-                }
-                val adapter = DriverAdapter(this, drivers)
-                binding.listPilotos.adapter = adapter
-            } catch (e: Exception) {
-                Log.e("RESTF1", "Error parsing JSON", e)
+            for (i in 0 until json.length()) {
+                val jsonObject = json.getJSONObject(i)
+                val driver = Driver(
+                    driverNumber = jsonObject.getInt("driver_number"),
+                    fullName = jsonObject.getString("full_name"),
+                    firstName = jsonObject.getString("first_name"),
+                    lastName = jsonObject.getString("last_name"),
+                    countryCode = jsonObject.optString("country_code", "N/A"), // Puede no existir
+                    teamName = jsonObject.optString("team_name", "N/A"),
+                    teamColour = jsonObject.optString("team_colour", "#FFFFFF"),
+                    headshotUrl = jsonObject.optString("headshot_url", ""),
+                    nameAcronym = jsonObject.optString("name_acronym", "N/a")
+                )
+                drivers.add(driver)
             }
+            val adapter = DriverAdapter(this, drivers)
+            binding.listPilotos.adapter = adapter
+
         }, Response.ErrorListener { error ->
             Log.e("RESTF1", "Error in API Request: ${error.message}")
             Toast.makeText(this, "Error al cargar los datos", Toast.LENGTH_SHORT).show()
