@@ -19,7 +19,7 @@ class DriverAdapter(private val context: Context?, private val drivers: List<Dri
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val binding: PilotRowBinding
 
-        val view: View = if (convertView == null) {
+        val view: View = if (convertView == null) { // Esto es para mejorar el rendimiento, revisa si la vista esta inflada o no
             binding = PilotRowBinding.inflate(LayoutInflater.from(context), parent, false)
             binding.root.tag = binding // Guardamos la vista para reutilizarla
             binding.root

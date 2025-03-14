@@ -6,13 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PilotActivity"
-    android:padding="16dp">
+    android:padding="30dp">
 
     <LinearLayout
         android:id="@+id/imagenes"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginBottom="256dp"
+        android:layout_marginBottom="192dp"
         android:orientation="horizontal"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -40,9 +40,9 @@
         android:id="@+id/infoPiloto"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="16dp"
         android:orientation="vertical"
-        android:padding="16dp"
+        android:padding="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imagenes"
         tools:layout_editor_absoluteX="16dp">
@@ -102,6 +102,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
