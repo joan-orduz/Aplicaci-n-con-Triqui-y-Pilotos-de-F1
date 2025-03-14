@@ -12,17 +12,17 @@
 
     <ImageView
         android:id="@+id/triqui"
-        android:layout_width="ma"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintBottom_toTopOf="@+id/f1"
         app:layout_constraintDimensionRatio="1:1"
         app:srcCompat ="@drawable/triqui"/>
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/f1"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
